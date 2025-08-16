@@ -1,1 +1,15 @@
 @import "tailwindcss";
+
+@theme {
+  --color-white: oklch(1 0 0);
+  --color-gray: oklch(0.90 0 0);
+  --color-black: oklch(0 0 0);
+  --color-gray-dark: oklch(0.21 0.01 250);
+  --color-gray-secondary: oklch(0.45 0 0);
+  --color-green:oklch(0.60 0.34 140);
+  --color-green-hover: oklch(0.52 0.34 140);
+
+  --radius-all: 2.5rem;
+  --spacing-202: 202px;
+  --spacing-184: 184px;
+}
