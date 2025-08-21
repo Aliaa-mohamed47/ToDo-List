@@ -1,17 +1,23 @@
+// SignIn.jsx
 import React from "react";
-import SignInSection from "../components/SignInSection";
-import LandingImage from "../components/LandingImage";
+import LandingImage from "../components/Shared/LandingImage";
+import SignInSection from "../components/SignInPage/SignInSection";
 
-const SignInPage = () => {
+const SignIn = () => {
     return (
-        <div className="min-h-screen flex items-center justify-center bg-white">
-            <div className="flex shadow-lg overflow-hidden px-12 py-14 gap-6 bg-gray">
-                <LandingImage />
+        <div className="bg-gray min-h-screen flex justify-center items-center">
+            <div className="flex flex-col md:flex-row overflow-hidden bg-gray gap-4 w-4/5 md:max-w-6xl min-h-[80vh] p-8 rounded-2xl">
+                
+                <div className="flex-1">
+                    <LandingImage />
+                </div>
 
-                <SignInSection type="signin" />
+                <div className="flex-1">
+                    <SignInSection type="signin" />
+                </div>
             </div>
         </div>
     );
 };
 
-export default SignInPage;
+export default SignIn;
