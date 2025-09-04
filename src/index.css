@@ -17,3 +17,9 @@
   --spacing-202: 202px;
   --spacing-184: 184px;
 }
+.zoom-80 {
+  zoom: 0.8;
+}
+.zoom-75 {
+  zoom: 0.75;
+}
