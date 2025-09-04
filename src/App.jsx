@@ -1,14 +1,12 @@
-import React from 'react';
-import LandingPage from "./pages/LandingPage";
-import SignIn from "./pages/SignIn";
-import SignUp from "./pages/SignUp";
-
-
+import React from "react";
+import { Outlet } from "react-router-dom";
 
 function App() {
-  // return <LandingPage />;
-  // return <SignIn />;
-  return <SignUp />;
+  return (
+    <div>
+      <Outlet /> {/* الصفحات هتتبدل هنا */}
+    </div>
+  );
 }
 
 export default App;
