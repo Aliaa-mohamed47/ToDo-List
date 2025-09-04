@@ -57,8 +57,8 @@ const App = () => {
     const key = currentUser ? `tasks_${currentUser.email}` : "tasks_guest";
     const savedTasks = JSON.parse(localStorage.getItem(key)) || { today: [], tomorrow: [], thisWeek: [] };
     const upcoming = savedTasks.today.filter(t => !t.completed).length +
-                     savedTasks.tomorrow.filter(t => !t.completed).length +
-                     savedTasks.thisWeek.filter(t => !t.completed).length;
+      savedTasks.tomorrow.filter(t => !t.completed).length +
+      savedTasks.thisWeek.filter(t => !t.completed).length;
     const today = savedTasks.today.filter(t => !t.completed).length;
     setUpcomingCount(upcoming);
     setTodayCount(today);
@@ -88,7 +88,7 @@ const App = () => {
   };
 
   const handleDeleteList = (id) => {
-    if(window.confirm("هل أنتِ متأكدة أنك تريدين حذف هذه القائمة؟")){
+    if(window.confirm("Are you sure you want to delete this list?")){
       const updatedLists = lists.filter(list => list.id !== id);
       setLists(updatedLists);
       localStorage.setItem(listKey, JSON.stringify(updatedLists));
@@ -97,7 +97,7 @@ const App = () => {
 
   const handleSignOut = () => {
     localStorage.removeItem("currentUser");
-    navigate("/"); // الرجوع للصفحة الرئيسية بعد تسجيل الخروج
+    navigate("/");
   };
 
   const visibleLists = lists.filter(list => list.name !== 'Hobby' && list.name !== 'Shopping');
@@ -276,7 +276,6 @@ const App = () => {
         </div>
       )}
 
-      {/* مودال التأكيد على Sign Out */}
       {showSignOutModal && (
         <div className="fixed inset-0 flex justify-center items-center z-50">
           <div className="absolute inset-0 bg-black opacity-30"></div>

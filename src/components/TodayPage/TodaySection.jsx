@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { FaCalendarAlt, FaClock, FaTrash } from "react-icons/fa";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 
-// مكون إدخال التاسك
 const TaskInput = ({ section, input, setInput, addTask }) => {
   const [showDate, setShowDate] = useState(false);
   const [showTime, setShowTime] = useState(false);
@@ -22,7 +21,6 @@ const TaskInput = ({ section, input, setInput, addTask }) => {
 
   return (
     <div className="relative  mb-3 flex items-center">
-      {/* زرار الإضافة */}
       <button
         type="button"
         onClick={() => addTask(section)}
@@ -33,7 +31,6 @@ const TaskInput = ({ section, input, setInput, addTask }) => {
         <AiOutlinePlusCircle />
       </button>
 
-      {/* input */}
       <input
         type="text"
         className="w-full border rounded px-10 py-2 pr-24 focus:border-blue-500 focus:ring focus:ring-blue-200 outline-none"
@@ -43,7 +40,6 @@ const TaskInput = ({ section, input, setInput, addTask }) => {
         onKeyDown={(e) => e.key === "Enter" && isReady && addTask(section)}
       />
 
-      {/* أيقونات التاريخ والوقت */}
       <div className="absolute right-3 top-1/2 -translate-y-1/2 flex gap-3 items-center">
         <div className="relative">
           <FaCalendarAlt
@@ -90,14 +86,12 @@ const TodayPage = () => {
   const [input, setInput] = useState({ today: { text: "", date: "", time: "" } });
   const [tasksKey, setTasksKey] = useState("tasks_guest");
 
-  // تحديد المفتاح بناءً على المستخدم الحالي
   useEffect(() => {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     const key = currentUser ? `tasks_${currentUser.email}` : "tasks_guest";
     setTasksKey(key);
   }, []);
 
-  // تحميل المهام عند تغيير المفتاح
   useEffect(() => {
     try {
       const savedTasks = localStorage.getItem(tasksKey);
@@ -107,7 +101,6 @@ const TodayPage = () => {
     }
   }, [tasksKey]);
 
-  // حفظ المهام عند أي تعديل
   useEffect(() => {
     try {
       localStorage.setItem(tasksKey, JSON.stringify(tasks));
@@ -116,7 +109,6 @@ const TodayPage = () => {
     }
   }, [tasks, tasksKey]);
 
-  // إضافة مهمة
   const addTask = (section) => {
     const { text, date, time } = input[section];
     if (!text.trim() || !date || !time) return;
@@ -132,14 +124,12 @@ const TodayPage = () => {
     });
   };
 
-  // تبديل حالة الإنجاز
   const toggleTask = (section, index) => {
     const updated = [...tasks[section]];
     updated[index].completed = !updated[index].completed;
     setTasks({ ...tasks, [section]: updated });
   };
 
-  // حذف مهمة
   const deleteTask = (section, index) => {
     const updated = [...tasks[section]];
     updated.splice(index, 1);

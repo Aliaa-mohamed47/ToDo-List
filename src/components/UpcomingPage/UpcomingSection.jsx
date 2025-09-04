@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { FaCalendarAlt, FaClock, FaTrash } from "react-icons/fa";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 
-// مكون إدخال التاسك
 const TaskInput = ({ section, input, setInput, addTask }) => {
   const [showDate, setShowDate] = useState(false);
   const [showTime, setShowTime] = useState(false);
@@ -22,7 +21,6 @@ const TaskInput = ({ section, input, setInput, addTask }) => {
 
   return (
     <div className="relative mb-3 flex items-center">
-      {/* زرار الإضافة */}
       <button
         type="button"
         onClick={() => addTask(section)}
@@ -33,7 +31,6 @@ const TaskInput = ({ section, input, setInput, addTask }) => {
         <AiOutlinePlusCircle />
       </button>
 
-      {/* input */}
       <input
         type="text"
         className="w-full border rounded px-10 py-2 pr-24 focus:border-blue-500 focus:ring focus:ring-blue-200 outline-none"
@@ -45,9 +42,7 @@ const TaskInput = ({ section, input, setInput, addTask }) => {
         }
       />
 
-      {/* الأيقونات */}
       <div className="absolute right-3 top-1/2 -translate-y-1/2 flex gap-3 items-center">
-        {/* Date Icon */}
         <div className="relative">
           <FaCalendarAlt
             className="text-gray-500 hover:text-blue-500 cursor-pointer"
@@ -66,7 +61,6 @@ const TaskInput = ({ section, input, setInput, addTask }) => {
           )}
         </div>
 
-        {/* Time Icon */}
         <div className="relative">
           <FaClock
             className="text-gray-500 hover:text-blue-500 cursor-pointer"
@@ -104,7 +98,6 @@ const UpcomingPage = () => {
 
   const [tasksKey, setTasksKey] = useState("tasks_guest");
 
-  // تحديد المفتاح بناءً على المستخدم الحالي
   useEffect(() => {
     const handleStorageChange = () => {
       const currentUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -120,7 +113,6 @@ const UpcomingPage = () => {
     };
   }, []);
 
-  // تحميل المهام عند تغيير المفتاح
   useEffect(() => {
     try {
       const savedTasks = localStorage.getItem(tasksKey);
@@ -134,7 +126,6 @@ const UpcomingPage = () => {
     }
   }, [tasksKey]);
 
-  // حفظ المهام عند أي تعديل
   useEffect(() => {
     try {
       localStorage.setItem(tasksKey, JSON.stringify(tasks));
@@ -143,7 +134,6 @@ const UpcomingPage = () => {
     }
   }, [tasks, tasksKey]);
 
-  // إضافة مهمة
   const addTask = (section) => {
     const { text, date, time } = input[section];
     if (!text.trim() || !date || !time) return;
@@ -159,14 +149,12 @@ const UpcomingPage = () => {
     });
   };
 
-  // تبديل حالة الإنجاز
   const toggleTask = (section, index) => {
     const updated = [...tasks[section]];
     updated[index].completed = !updated[index].completed;
     setTasks({ ...tasks, [section]: updated });
   };
 
-  // حذف مهمة
   const deleteTask = (section, index) => {
     const updated = [...tasks[section]];
     updated.splice(index, 1);
@@ -180,7 +168,6 @@ const UpcomingPage = () => {
 
   return (
     <div className="p-8 bg-white min-h-screen">
-      {/* العنوان وعدد المهام */}
       <h1 className="text-3xl font-bold mb-6 flex items-center gap-2 text-gray-secondary">
         Upcoming
         <span className="bg-gray text-gray-700 rounded-full w-8 h-8 flex items-center justify-center text-sm font-medium">
@@ -188,7 +175,6 @@ const UpcomingPage = () => {
         </span>
       </h1>
 
-      {/* Today صف لوحده */}
       <div className="grid grid-cols-1 gap-6 mb-6">
         <div className="border rounded-xl p-6 bg-white shadow w-full">
           <h2 className="text-xl font-semibold mb-3 text-gray-800">Today</h2>
@@ -233,7 +219,6 @@ const UpcomingPage = () => {
         </div>
       </div>
 
-      {/* Tomorrow + This Week جنب بعض */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {["tomorrow", "thisWeek"].map((section) => (
           <div
