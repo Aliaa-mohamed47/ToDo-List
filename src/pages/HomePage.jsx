@@ -6,14 +6,12 @@ const HomePage = () => {
   return (
     <div className="min-h-screen flex bg-white">
       <div className="flex shadow-lg pt-4 pr-6 pl-4 pb-6 gap-6 bg-white ml-6">
-        {/* Sidebar على الشمال ومعاه margin-left */}
         <Sidebar
           title="Welcome to ToDo Py"
           description="Your ultimate task management solution."
           buttonText="Get Started"
         />
 
-        {/* Welcome Section */}
         <WelcomeSection
           title="Welcome to ToDoPy"
           description={

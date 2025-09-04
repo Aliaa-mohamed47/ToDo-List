@@ -1,23 +1,20 @@
 import React, { useState } from "react";
-import eyeImage from "../../assets/eye.png";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF } from "react-icons/fa";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 
 const SignInSection = ({ type }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [message, setMessage] = useState("");
   const [success, setSuccess] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // هات كل اليوزرز من localStorage
     const users = JSON.parse(localStorage.getItem("users")) || [];
-
-    // دور على يوزر مطابق
     const foundUser = users.find(
       (u) => u.email === email && u.password === password
     );
@@ -25,10 +22,7 @@ const SignInSection = ({ type }) => {
     if (foundUser) {
       setMessage("✅ Login successful!");
       setSuccess(true);
-
-      // خزّن اليوزر الحالي اللي عمل لوج إن
       localStorage.setItem("currentUser", JSON.stringify(foundUser));
-
       setTimeout(() => {
         navigate("/HomePage");
       }, 2000);
@@ -56,18 +50,19 @@ const SignInSection = ({ type }) => {
 
         <div className="relative w-full">
           <input
-            type="password"
+            type={showPassword ? "text" : "password"}
             placeholder="**************"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             className="w-full h-10 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-black pr-10"
             style={{ border: "1px solid oklch(0.21 0.01 250)" }}
           />
-          <img
-            src={eyeImage}
-            alt="eye"
-            className="absolute top-1/2 right-2 transform -translate-y-1/2 w-5 h-5 cursor-pointer"
-          />
+          <div
+            className="absolute top-1/2 right-2 transform -translate-y-1/2 cursor-pointer text-xl"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+          </div>
         </div>
 
         <button

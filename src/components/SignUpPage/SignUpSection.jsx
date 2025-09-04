@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import eyeImage from "../../assets/eye.png";
 import { Link, useNavigate } from "react-router-dom";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 const SignUpSection = () => {
   const [firstName, setFirstName] = useState("");
@@ -10,6 +10,7 @@ const SignUpSection = () => {
   const [rePassword, setRePassword] = useState("");
   const [message, setMessage] = useState("");
   const [success, setSuccess] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
 
@@ -28,17 +29,14 @@ const SignUpSection = () => {
       return;
     }
 
-    // هات اليوزرز من localStorage
     let users = JSON.parse(localStorage.getItem("users")) || [];
 
-    // check لو الايميل متسجل قبل كده
     if (users.some((u) => u.email === email)) {
       setMessage("⚠️ Email already exists");
       setSuccess(false);
       return;
     }
 
-    // خزّن اليوزر الجديد
     const newUser = { 
       id: Date.now(), 
       firstName, 
@@ -53,7 +51,6 @@ const SignUpSection = () => {
     setMessage("✅ Account created successfully!");
     setSuccess(true);
 
-    // بعد ثانيتين رجّعه على signin
     setTimeout(() => {
       navigate("/signin");
     }, 2000);
@@ -93,28 +90,38 @@ const SignUpSection = () => {
 
         <div className="relative w-full">
           <input
-            type="password"
+            type={showPassword ? "text" : "password"}
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             className="w-full h-10 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-black pr-10"
             style={{ border: "1px solid oklch(0.21 0.01 250)" }}
           />
-          <img
-            src={eyeImage}
-            alt="eye"
-            className="absolute top-1/2 right-2 transform -translate-y-1/2 w-5 h-5 cursor-pointer"
-          />
+          <div
+            className="absolute top-1/2 right-2 transform -translate-y-1/2 text-xl cursor-pointer"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+          </div>
         </div>
 
-        <input
-          type="password"
-          placeholder="Re-enter the password"
-          value={rePassword}
-          onChange={(e) => setRePassword(e.target.value)}
-          className="w-full h-10 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
-          style={{ border: "1px solid oklch(0.21 0.01 250)" }}
-        />
+        <div className="relative w-full">
+          <input
+            type={showPassword ? "text" : "password"}
+            placeholder="Re-enter the password"
+            value={rePassword}
+            onChange={(e) => setRePassword(e.target.value)}
+            className="w-full h-10 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-black pr-10"
+            style={{ border: "1px solid oklch(0.21 0.01 250)" }}
+          />
+            <div
+              className="absolute top-1/2 right-2 transform -translate-y-1/2 text-xl cursor-pointer"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+            </div>
+          </div>
+
 
         <button
           type="submit"

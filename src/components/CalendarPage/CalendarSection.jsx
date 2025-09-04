@@ -11,7 +11,6 @@ const CalendarSection = () => {
   const [today, setToday] = useState("");
   const [activeView, setActiveView] = useState("timeGridDay");
 
-  // التاريخ الحالي
   useEffect(() => {
     const date = new Date();
     const day = date.getDate();
@@ -20,7 +19,6 @@ const CalendarSection = () => {
     setToday(`${day} ${month} ${year}`);
   }, []);
 
-  // تحميل التاسكات من localStorage
   useEffect(() => {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     const key = currentUser ? `tasks_${currentUser.email}` : "tasks_guest";
