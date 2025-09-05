@@ -5,7 +5,7 @@ import TodaySection from "../components/TodayPage/TodaySection";
 const TodayPage = () => {
   return (
     <div className="min-h-screen flex bg-white">
-      <div className="flex shadow-lg pt-4 pr-6 pl-4 pb-6 gap-6 bg-white ml-6 w-full max-w-6xl">
+      <div className="flex flex-col lg:flex-row shadow-lg p-6 gap-6 bg-white w-full max-w-6xl mx-auto">
         <Sidebar
           title="Welcome to ToDo Py"
           description="Your ultimate task management solution."
@@ -13,7 +13,7 @@ const TodayPage = () => {
           className="flex-shrink-0"
         />
 
-        <TodaySection />
+\        <TodaySection />
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ const WelcomeSection = ({ title, description, buttonText }) => {
                 {description}
             </p>
 
-            <button className="bg-lime text-black h-10 rounded-lg hover:bg-lime-hover transition px-10 sm:px-16 md:px-20 lg:px-[78px] mt-12 whitespace-nowrap">
+            <button className="bg-lime text-black h-10 rounded-lg hover:bg-lime-hover transition px-10 sm:px-16 md:px-20 lg:px-[78px] mt-12 whitespace-nowrap mb-8 lg:mb-0">
                 {buttonText}
             </button>
         </div>

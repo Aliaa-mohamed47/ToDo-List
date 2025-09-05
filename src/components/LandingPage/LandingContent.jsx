@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const LandingContent = ({ title, description, buttonText, linkText, linkHref }) => {
     return (
@@ -11,17 +12,15 @@ const LandingContent = ({ title, description, buttonText, linkText, linkHref }) 
                 {description}
             </p>
 
-            <button className="bg-lime text-black px-6 py-2 rounded-xl hover:bg-lime-hover transition mb-6 w-full max-w-[calc(100%-2.5rem)]">
-                {buttonText}
-            </button>
+            <Link to={linkHref} className="w-full max-w-[calc(100%-2.5rem)] mb-6">
+                <button className="bg-lime text-black px-6 py-2 rounded-xl hover:bg-lime-hover transition w-full">
+                    {buttonText}
+                </button>
+            </Link>
 
-            <p className="text-black text-sm">
-                {linkText}{" "}
-
-                <a href={linkHref} className="text-black hover:underline">
-                    Sign In
-                </a>
-            </p>
+            <Link to={linkHref} className="text-black text-sm hover:underline">
+                {linkText} Sign In
+            </Link>
         </div>
     );
 };
