@@ -5,7 +5,7 @@ import WelcomeSection from "../components/HomePage/WelcomeSection";
 const HomePage = () => {
   return (
     <div className="min-h-screen flex bg-white">
-      <div className="flex flex-col lg:flex-row shadow-lg p-6 gap-6 bg-white w-full ml-0 lg:ml-6">
+      <div className="flex flex-col lg:flex-row p-6 gap-6 bg-white w-full ml-0 lg:ml-6">
         <Sidebar
           title="Welcome to ToDo Py"
           description="Your ultimate task management solution."
