@@ -33,8 +33,8 @@ const SignInSection = ({ type }) => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-start h-full md:px-24 py-12 text-center bg-white rounded-all shadow-lg">
-      <h1 className="text-3xl font-bold mb-6 pt-15">
+    <div className="flex flex-col justify-center items-center h-full px-6 sm:px-10 md:px-24 py-12 text-center bg-white rounded-all shadow-lg w-full max-w-lg mx-auto">
+      <h1 className="text-3xl font-bold mb-6 pt-4 items-start self-start">
         {type === "signin" ? "Sign In" : "Sign Up"}
       </h1>
 
@@ -87,11 +87,11 @@ const SignInSection = ({ type }) => {
 
       <div className="flex items-center w-full mb-1 mt-7">
         <hr className="flex-grow border-t border-gray-secondary" />
-        <span className="mx-10 text-gray-secondary">or</span>
+        <span className="mx-4 text-gray-secondary">or</span>
         <hr className="flex-grow border-t border-gray-secondary" />
       </div>
 
-      <div className="flex w-full gap-20 mt-4">
+      <div className="flex w-full gap-4 mt-4">
         <button
           className="flex-1 h-10 rounded-lg flex items-center justify-center text-black transition gap-2"
           style={{ backgroundColor: "oklch(0.90 0 0)" }}
@@ -108,13 +108,14 @@ const SignInSection = ({ type }) => {
         </button>
       </div>
 
-      <p className="text-black text-l mt-6 pl-16">
-        {type === "signin" ? "Don't have an account? " : "Already have an account? "}
+      <p className="text-black text-sm mt-6">
         <Link
           to={type === "signin" ? "/signup" : "/signin"}
           className="text-black hover:underline cursor-pointer"
         >
-          {type === "signin" ? "Sign Up" : "Sign In"}
+          {type === "signin"
+            ? "Don't have an account? Sign Up"
+            : "Already have an account? Sign In"}
         </Link>
       </p>
     </div>

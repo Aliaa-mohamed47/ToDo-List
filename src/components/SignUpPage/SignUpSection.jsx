@@ -37,14 +37,14 @@ const SignUpSection = () => {
       return;
     }
 
-    const newUser = { 
-      id: Date.now(), 
-      firstName, 
-      lastName, 
-      email, 
-      password 
+    const newUser = {
+      id: Date.now(),
+      firstName,
+      lastName,
+      email,
+      password,
     };
-    
+
     users.push(newUser);
     localStorage.setItem("users", JSON.stringify(users));
 
@@ -57,8 +57,8 @@ const SignUpSection = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-start h-full md:px-24 py-12 text-center bg-white rounded-all shadow-lg">
-      <h1 className="text-3xl font-bold mb-6 pt-12">Sign Up</h1>
+    <div className="flex flex-col justify-center items-center h-full px-6 sm:px-10 md:px-16 lg:px-24 py-12 bg-white rounded-all shadow-lg w-full max-w-lg mx-auto">
+      <h1 className="text-3xl font-bold mb-6 pt-6 self-start">Sign Up</h1>
 
       <form className="w-full flex flex-col gap-6" onSubmit={handleSubmit}>
         <input
@@ -114,14 +114,13 @@ const SignUpSection = () => {
             className="w-full h-10 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-black pr-10"
             style={{ border: "1px solid oklch(0.21 0.01 250)" }}
           />
-            <div
-              className="absolute top-1/2 right-2 transform -translate-y-1/2 text-xl cursor-pointer"
-              onClick={() => setShowPassword(!showPassword)}
-            >
-              {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
-            </div>
+          <div
+            className="absolute top-1/2 right-2 transform -translate-y-1/2 text-xl cursor-pointer"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
           </div>
-
+        </div>
 
         <button
           type="submit"
@@ -133,9 +132,7 @@ const SignUpSection = () => {
         {message && (
           <div
             className={`mt-2 p-2 rounded text-center ${
-              success
-                ? "bg-green-200 text-green-800"
-                : "bg-red-200 text-red-800"
+              success ? "bg-green-200 text-green-800" : "bg-red-200 text-red-800"
             }`}
           >
             {message}
@@ -143,13 +140,12 @@ const SignUpSection = () => {
         )}
       </form>
 
-      <p className="text-black text-sm mt-6 pl-16">
-        Already have an account?{" "}
+      <p className="text-black text-sm mt-6 text-center w-full">
         <Link
           to="/signin"
           className="text-black hover:underline cursor-pointer"
         >
-          Sign In
+          Already have an account? Sign In
         </Link>
       </p>
     </div>

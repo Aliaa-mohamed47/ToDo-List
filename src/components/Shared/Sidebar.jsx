@@ -7,8 +7,10 @@ import {
   AiOutlinePlusCircle,
   AiOutlineDoubleRight,
   AiOutlineAlignCenter,
-  AiOutlineMenu
+  AiOutlineMenu,
+  AiOutlineSearch
 } from 'react-icons/ai';
+
 import { MdStickyNote2 } from "react-icons/md";
 import { FiLogOut } from "react-icons/fi";
 import { FaTrash } from "react-icons/fa";
@@ -111,7 +113,12 @@ const App = () => {
             <span className="font-bold text-lg text-black pt-8">Menu</span>
             <AiOutlineMenu />
           </div>
-          <Search placeholder="Search" size="small" className="rounded-full" />
+          <Input
+            placeholder="Search"
+            prefix={<AiOutlineSearch className="text-gray-400" />}
+            className="rounded-lg"
+            style={{ borderRadius: "8px" }}
+          />
           <span className="font-semibold text-black mt-2 pt-7">Tasks</span>
         </div>
       ),
@@ -169,7 +176,12 @@ const App = () => {
                 {list.name}
               </div>
               <FaTrash
-                className="text-red-500 opacity-0 group-hover:opacity-100 cursor-pointer mr-2"
+                className="
+                  text-red-500 
+                  opacity-100 lg:opacity-0 
+                  group-hover:opacity-100 
+                  cursor-pointer mr-2
+                "
                 onClick={() => handleDeleteList(list.id)}
               />
             </div>
@@ -264,8 +276,17 @@ const App = () => {
                 <div key={sticky.id} className="p-2 bg-yellow-200 rounded relative group">
                   {sticky.text}
                   <button
-                    className="absolute top-1 right-1 text-red-600 opacity-0 group-hover:opacity-100 cursor-pointer"
-                    onClick={() => { if(window.confirm("هل أنتِ متأكدة أنك تريدين حذف هذا sticky؟")) deleteSticky(sticky.id); }}
+                    className="
+                      absolute top-1 right-1 
+                      text-red-600 
+                      opacity-100 lg:opacity-0 
+                      group-hover:opacity-100 
+                      cursor-pointer
+                    "
+                    onClick={() => { 
+                      if (window.confirm("Are you sure you want to delete this sticky?")) 
+                        deleteSticky(sticky.id); 
+                    }}
                   >
                     ×
                   </button>

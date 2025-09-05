@@ -179,7 +179,12 @@ const TodayPage = () => {
                 </span>
               </div>
               <button
-                className="text-red-500 hover:text-red-700 opacity-0 group-hover:opacity-100 transition"
+                className="
+                  text-red-500 hover:text-red-700 
+                  opacity-100 lg:opacity-0 
+                  lg:group-hover:opacity-100 
+                  transition
+                "
                 onClick={() => deleteTask("today", i)}
               >
                 <FaTrash />

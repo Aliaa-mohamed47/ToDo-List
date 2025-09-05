@@ -5,7 +5,7 @@ import CalendarSection from "../components/CalendarPage/CalendarSection";
 const CalendarPage = () => {
   return (
     <div className="min-h-screen flex bg-white">
-      <div className="flex shadow-lg pt-4 pr-6 pl-4 pb-6 gap-6 bg-white ml-6 w-full">
+      <div className="flex flex-col lg:flex-row shadow-lg p-6 gap-6 bg-white w-full ml-0 lg:ml-6">
         <Sidebar
           title="Welcome to ToDo Py"
           description="Your ultimate task management solution."

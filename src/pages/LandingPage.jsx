@@ -3,16 +3,16 @@ import React from "react";
 import LandingContent from "../components/LandingPage/LandingContent";
 import LandingImage from "../components/Shared/LandingImage";
 
-
 const LandingPage = () => {
     return (
-        <div className="bg-gray min-h-screen flex justify-center items-center">
-            <div className="zoom-80 flex flex-col md:flex-row bg-gray gap-4 md:max-w-6xl p-8">
-                <div className="flex-1">
+        <div className="bg-gray min-h-screen flex justify-center items-center px-4">
+            <div className="zoom-75 flex flex-col md:flex-row items-center md:items-stretch bg-gray gap-8 md:gap-12 max-w-6xl w-full py-8">
+                
+                <div className="flex-1 flex justify-center">
                     <LandingImage />
                 </div>
 
-                <div className="flex-1 flex justify-center items-center">
+                <div className="flex-1 flex justify-center items-center text-center md:text-left">
                     <LandingContent
                         title="ToDo Py"
                         description={
