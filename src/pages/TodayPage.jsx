@@ -13,7 +13,7 @@ const TodayPage = () => {
           className="flex-shrink-0"
         />
 
-\        <TodaySection />
+        <TodaySection />
       </div>
     </div>
   );
